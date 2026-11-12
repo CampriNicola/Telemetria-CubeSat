@@ -34,4 +34,29 @@ class Satellite:
                 result.append(lettura)
 
         return result
-    
+
+    def riepilogo(self) -> None:
+        print("Riepilogo satallite")
+
+        for lettura in self.letture:
+            allarme = ""
+            if lettura["allarme"]:
+                allarme = "ALLARME"
+            else:
+                allarme = "OK"
+            print(f"lettura -- sensore: {lettura["sensore"]}; grandezza: {lettura["grandezza"]}; valore: {lettura["valore"]}; unita: {lettura["unita"]}; allarme: {allarme}")
+
+
+
+#Test allarmi
+satellite = Satellite()
+
+satellite.aggiungi_sensore(Sensore("AAA", "Temperatura", "Celsius", 100))
+
+
+satellite.registra_lettura("AAA", 40)
+satellite.registra_lettura("AAA", 100)
+satellite.registra_lettura("AAA", 200)
+
+satellite.riepilogo()
+
